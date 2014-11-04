@@ -461,9 +461,11 @@ class BoxClient(object):
         Args:
             - parent: (optional) ID or a Dictionary (as returned by the apis) of the parent folder
         """
-        data = {"name": name,
-                'parent': {'id': self._get_id(parent)}}.update(data)
-
+        params = {
+            'name': name,
+            'parent': {'id': self._get_id(parent)}
+        }
+        params.update(data)
 
         return self._request("post", 'folders', data=data).json()
 
