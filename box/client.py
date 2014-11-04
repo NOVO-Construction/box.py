@@ -418,11 +418,11 @@ class BoxClient(object):
         while content['entries']:  # while the current batch has entries
             for entry in content['entries']:
                 yield entry
-            
+
             # stop if 'total_count' of entries (or more) has been fetched so far
-            if  offset + len(content['entries']) >= content['total_count']:
+            if offset + len(content['entries']) >= content['total_count']:
                 break
-                
+
             # otherwise, fetch the next batch and repeat
             offset += batch_size
             content = self.get_folder_content(folder_id, limit=batch_size, offset=offset)
@@ -445,7 +445,7 @@ class BoxClient(object):
 
         data = {
             'parent': {
-            'id': self._get_id(destination_parent)
+                'id': self._get_id(destination_parent),
             }
         }
 
