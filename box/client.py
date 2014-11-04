@@ -454,20 +454,17 @@ class BoxClient(object):
 
         return self._request('post', 'folders/{0}/copy'.format(folder_id), data=data).json()
 
-    def create_folder(self, name, parent=0, data={}):
+    def create_folder(self, name, parent=0):
         """
         creates a new folder under the parent.
 
         Args:
             - parent: (optional) ID or a Dictionary (as returned by the apis) of the parent folder
         """
-        params = {
-            'name': name,
-            'parent': {'id': self._get_id(parent)}
-        }
-        params.update(data)
+        data = {"name": name,
+                'parent': {'id': self._get_id(parent)}}
 
-        return self._request("post", 'folders', data=params).json()
+        return self._request("post", 'folders', data=data).json()
 
     def get_folder_collaborations(self, folder_id):
         """
