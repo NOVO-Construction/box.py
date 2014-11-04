@@ -985,7 +985,7 @@ class BoxClient(object):
 
         self._request('delete', 'task_assignments/{0}'.format(assignment_id))
 
-    def search(self, query, limit=30, offset=0):
+    def search(self, query, limit=30, offset=0, content_types=None):
         """
         The search endpoint provides a simple way of finding items that are accessible in a given user's Box account.
 
@@ -994,12 +994,15 @@ class BoxClient(object):
                      and other fields of the different item types.
             - limit: (optional) number of items to return. (default=30, max=200).
             - offset: (optional) The record at which to start
+            - content_types: Limit searches to specific Box designated content types. Can be name, description, file_content, comments, or tags.
+              Requires one or a set of comma delimited content_types: content_type_1,content_type_2,....
         """
 
         params = {
             'query': query,
             'limit': limit,
             'offset': offset,
+            'content_types': content_types,
         }
 
         return self._request("get", 'search', params).json()
