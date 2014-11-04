@@ -467,7 +467,7 @@ class BoxClient(object):
         }
         params.update(data)
 
-        return self._request("post", 'folders', data=data).json()
+        return self._request("post", 'folders', data=params).json()
 
     def get_folder_collaborations(self, folder_id):
         """
