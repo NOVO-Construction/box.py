@@ -1150,8 +1150,8 @@ class TestClient(unittest.TestCase):
 
     def test_search(self):
         expected_result = {"total_count": 4}
-        client = self.make_client("get", "search", params={'query': "foobar", 'limit': 123, 'offset': 456}, result=expected_result)
-        result = client.search("foobar", limit=123, offset=456)
+        client = self.make_client("get", "search", params={'query': "foobar", 'limit': 123, 'offset': 456, 'content_types': 'content_type'}, result=expected_result)
+        result = client.search("foobar", limit=123, offset=456, content_types='content_type')
         self.assertEqual(result, expected_result)
 
     def test_get_collaboration(self):
