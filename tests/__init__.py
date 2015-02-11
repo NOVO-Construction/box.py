@@ -1,4 +1,7 @@
-from StringIO import StringIO
+try:
+    from StringIO import StringIO
+except ImportError:
+    from io import StringIO
 from datetime import tzinfo, timedelta
 from flexmock import flexmock
 try:
