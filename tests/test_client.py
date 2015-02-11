@@ -68,7 +68,7 @@ class TestClient(unittest.TestCase):
     def test_get_id(self):
         self.assertEqual('123', BoxClient._get_id(123))
         self.assertEqual('123', BoxClient._get_id('123'))
-        self.assertEqual('123', BoxClient._get_id(123L))
+        self.assertEqual('123', BoxClient._get_id(123))
         self.assertEqual('123', BoxClient._get_id({'id': 123}))
 
     def test_handle_error(self):
